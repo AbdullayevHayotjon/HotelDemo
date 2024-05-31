@@ -16,5 +16,10 @@ namespace HotelDemo.Forms
         {
             InitializeComponent();
         }
+
+        private void AttendanceReportForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

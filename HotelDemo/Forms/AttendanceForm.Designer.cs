@@ -52,9 +52,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(552, 623);
             label1.Name = "label1";
-            label1.Size = new Size(82, 20);
+            label1.Size = new Size(63, 20);
             label1.TabIndex = 17;
-            label1.Text = "Sotuvchi Id";
+            label1.Text = "Ishchi Id";
             // 
             // btEmployeExit
             // 
@@ -123,7 +123,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1438, 861);
+            ClientSize = new Size(1382, 853);
             Controls.Add(txId);
             Controls.Add(label1);
             Controls.Add(btEmployeExit);
