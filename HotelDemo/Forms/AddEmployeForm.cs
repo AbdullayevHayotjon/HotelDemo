@@ -61,7 +61,7 @@ namespace HotelDemo.Forms
 
         private void btAddEmploye_Click(object sender, EventArgs e)
         {
-            if (employeService.CheckNumber(txAge.Text))
+            if (employeService.CheckNumber(txAge.Text) && int.Parse(txAge.Text) >= 18)
             {
                 if (employeService.CheckProbel(cbEmployeType.Text))
                 {

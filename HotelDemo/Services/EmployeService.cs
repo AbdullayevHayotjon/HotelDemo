@@ -76,14 +76,15 @@ namespace HotelDemo.Services
             conn.Open();
             var sql = "UPDATE employe SET firstname = @firstname, lastname = @lastname, surename = @surename, age = @age, employetype = @employetype, salary = @salary, login = @login, password = @password WHERE id = @id";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("firstname", employe.FirstName);
-            cmd.Parameters.AddWithValue("lastname", employe.LastName);
-            cmd.Parameters.AddWithValue("surename", employe.SureName);
+            cmd.Parameters.AddWithValue("firstname", string.IsNullOrEmpty(employe.FirstName) ? (object)DBNull.Value : employe.FirstName);
+            cmd.Parameters.AddWithValue("lastname", string.IsNullOrEmpty(employe.LastName) ? (object)DBNull.Value : employe.LastName);
+            cmd.Parameters.AddWithValue("surename", string.IsNullOrEmpty(employe.SureName) ? (object)DBNull.Value : employe.SureName);
             cmd.Parameters.AddWithValue("age", employe.Age);
             cmd.Parameters.AddWithValue("employetype", employe.EmpType);
             cmd.Parameters.AddWithValue("salary", employe.Salary);
-            cmd.Parameters.AddWithValue("login", employe.Login);
-            cmd.Parameters.AddWithValue("password", employe.Password);
+            cmd.Parameters.AddWithValue("login", string.IsNullOrEmpty(employe.Login) ? (object)DBNull.Value : employe.Login);
+            cmd.Parameters.AddWithValue("password", string.IsNullOrEmpty(employe.Password) ? (object)DBNull.Value : employe.Password);
+            cmd.Parameters.AddWithValue("id", employe.Id);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
@@ -139,9 +140,35 @@ namespace HotelDemo.Services
         }
         public bool CheckLogin(string login)
         {
-            foreach(Employe employe in employes)
+            foreach (Employe employe in employes)
             {
-                if(login == employe.Login)
+                if (login == employe.Login)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool CheckId(int id)
+        {
+            foreach (Employe employe in employes)
+            {
+                if (id == employe.Id)
+                {
+                    return true; ;
+                }
+            }
+            return false;
+        }
+        public bool CheckLogin1(int id, string login)
+        {
+            foreach (Employe employe in employes)
+            {
+                if (employe.Id == id)
+                {
+                    continue;
+                }
+                if (employe.Login == login)
                 {
                     return false;
                 }
