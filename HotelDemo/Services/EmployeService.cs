@@ -15,6 +15,7 @@ namespace HotelDemo.Services
         public List<Employe> employes = new List<Employe>();
         public List<Employe> GetAllEmployes()
         {
+            List<Employe> employes1 = new List<Employe>();
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             conn.Open();
             var sql = "SELECT * FROM employe ORDER BY id";
@@ -34,10 +35,11 @@ namespace HotelDemo.Services
                     Login = reader.IsDBNull(7) ? string.Empty : reader.GetString(7),
                     Password = reader.IsDBNull(8) ? string.Empty : reader.GetString(8)
                 };
+                employes1.Add(employe);
                 employes.Add(employe);
             }
             cmd.Dispose();
-            return employes;
+            return employes1;
         }
         public List<Employe> GetSeachList(string search)
         {
@@ -57,14 +59,14 @@ namespace HotelDemo.Services
             conn.Open();
             var sql = "INSERT INTO employe (firstname, lastname, surename, age, employetype, salary, login, password) VALUES (@value1, @value2, @value3, @value4, @value5, @value6, @value7, @value8)";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("value1", employe.FirstName);
-            cmd.Parameters.AddWithValue("value2", employe.LastName);
-            cmd.Parameters.AddWithValue("value3", employe.SureName);
+            cmd.Parameters.AddWithValue("value1", employe.FirstName ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("value2", employe.LastName ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("value3", employe.SureName ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("value4", employe.Age);
             cmd.Parameters.AddWithValue("value5", employe.EmpType);
             cmd.Parameters.AddWithValue("value6", employe.Salary);
-            cmd.Parameters.AddWithValue("value7", employe.Login);
-            cmd.Parameters.AddWithValue("value8", employe.Password);
+            cmd.Parameters.AddWithValue("value7", employe.Login ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("value8", employe.Password ?? (object)DBNull.Value);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
@@ -94,6 +96,57 @@ namespace HotelDemo.Services
             cmd.Parameters.AddWithValue("id", employe.Id);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
+        }
+        public bool CheckNumber(string str)
+        {
+            if (str.Length > 0)
+            {
+                int sanoq = 0;
+                char FirstChar = '1';
+                for (int i = 0; i < str.Length; i++)
+                {
+                    FirstChar = str[0];
+                    if (str[i] >= 48 && str[i] <= 57)
+                    {
+                        sanoq++;
+                    }
+                }
+                if (FirstChar != '0' && sanoq == str.Length)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool CheckProbel(string str)
+        {
+            if (str.Length > 0)
+            {
+                int sanoq = 0;
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (str[i] == ' ')
+                    {
+                        sanoq++;
+                    }
+                }
+                if (sanoq != str.Length)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool CheckLogin(string login)
+        {
+            foreach(Employe employe in employes)
+            {
+                if(login == employe.Login)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

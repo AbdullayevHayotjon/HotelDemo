@@ -32,7 +32,28 @@
             btExit = new Button();
             btSearch = new Button();
             txSearch = new TextBox();
+            employeBindingSource = new BindingSource(components);
+            button1 = new Button();
+            txLastName = new TextBox();
+            txFirstName = new TextBox();
+            txPassword = new TextBox();
+            txPrice = new TextBox();
+            txAge = new TextBox();
+            txSureName = new TextBox();
+            txLogin = new TextBox();
+            cbEmployeType = new ComboBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            btAddEmploye = new Button();
+            pnLogin = new Panel();
             dataGridView1 = new DataGridView();
+            employeBindingSource1 = new BindingSource(components);
             idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -42,27 +63,10 @@
             salaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             loginDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            employeBindingSource = new BindingSource(components);
-            button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            comboBox1 = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeBindingSource).BeginInit();
+            pnLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // btExit
@@ -78,7 +82,7 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(751, 70);
+            btSearch.Location = new Point(751, 32);
             btSearch.Name = "btSearch";
             btSearch.Size = new Size(94, 29);
             btSearch.TabIndex = 31;
@@ -88,22 +92,194 @@
             // 
             // txSearch
             // 
-            txSearch.Location = new Point(522, 71);
+            txSearch.Location = new Point(522, 33);
             txSearch.Name = "txSearch";
             txSearch.Size = new Size(197, 27);
             txSearch.TabIndex = 30;
+            // 
+            // employeBindingSource
+            // 
+            employeBindingSource.DataSource = typeof(EmployeControl.Employe);
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F);
+            button1.Location = new Point(1200, 737);
+            button1.Name = "button1";
+            button1.Size = new Size(96, 29);
+            button1.TabIndex = 33;
+            button1.Text = "Orqaga";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // txLastName
+            // 
+            txLastName.Location = new Point(710, 332);
+            txLastName.Name = "txLastName";
+            txLastName.Size = new Size(135, 27);
+            txLastName.TabIndex = 34;
+            // 
+            // txFirstName
+            // 
+            txFirstName.Location = new Point(710, 280);
+            txFirstName.Name = "txFirstName";
+            txFirstName.Size = new Size(135, 27);
+            txFirstName.TabIndex = 35;
+            // 
+            // txPassword
+            // 
+            txPassword.Location = new Point(128, 80);
+            txPassword.Name = "txPassword";
+            txPassword.Size = new Size(135, 27);
+            txPassword.TabIndex = 36;
+            // 
+            // txPrice
+            // 
+            txPrice.Location = new Point(710, 565);
+            txPrice.Name = "txPrice";
+            txPrice.Size = new Size(135, 27);
+            txPrice.TabIndex = 37;
+            // 
+            // txAge
+            // 
+            txAge.Location = new Point(710, 447);
+            txAge.Name = "txAge";
+            txAge.Size = new Size(135, 27);
+            txAge.TabIndex = 38;
+            // 
+            // txSureName
+            // 
+            txSureName.Location = new Point(710, 390);
+            txSureName.Name = "txSureName";
+            txSureName.Size = new Size(135, 27);
+            txSureName.TabIndex = 39;
+            // 
+            // txLogin
+            // 
+            txLogin.Location = new Point(128, 20);
+            txLogin.Name = "txLogin";
+            txLogin.Size = new Size(135, 27);
+            txLogin.TabIndex = 40;
+            // 
+            // cbEmployeType
+            // 
+            cbEmployeType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEmployeType.FormattingEnabled = true;
+            cbEmployeType.Location = new Point(710, 501);
+            cbEmployeType.Name = "cbEmployeType";
+            cbEmployeType.Size = new Size(135, 28);
+            cbEmployeType.TabIndex = 41;
+            cbEmployeType.SelectedIndexChanged += cbEmployeType_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(600, 287);
+            label1.Name = "label1";
+            label1.Size = new Size(80, 20);
+            label1.TabIndex = 42;
+            label1.Text = "First Name";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(600, 335);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 20);
+            label2.TabIndex = 43;
+            label2.Text = "Last Name";
+            label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(600, 397);
+            label3.Name = "label3";
+            label3.Size = new Size(82, 20);
+            label3.TabIndex = 44;
+            label3.Text = "Sure Name";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(600, 454);
+            label4.Name = "label4";
+            label4.Size = new Size(36, 20);
+            label4.TabIndex = 45;
+            label4.Text = "Age";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(600, 509);
+            label5.Name = "label5";
+            label5.Size = new Size(100, 20);
+            label5.TabIndex = 46;
+            label5.Text = "Employe type";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(600, 572);
+            label6.Name = "label6";
+            label6.Size = new Size(42, 20);
+            label6.TabIndex = 47;
+            label6.Text = "Oylik";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(18, 27);
+            label7.Name = "label7";
+            label7.Size = new Size(46, 20);
+            label7.TabIndex = 48;
+            label7.Text = "Login";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(18, 83);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 20);
+            label8.TabIndex = 49;
+            label8.Text = "Parol";
+            // 
+            // btAddEmploye
+            // 
+            btAddEmploye.Location = new Point(600, 737);
+            btAddEmploye.Name = "btAddEmploye";
+            btAddEmploye.Size = new Size(245, 29);
+            btAddEmploye.TabIndex = 50;
+            btAddEmploye.Text = "Qo'shish";
+            btAddEmploye.UseVisualStyleBackColor = true;
+            btAddEmploye.Click += btAddEmploye_Click;
+            // 
+            // pnLogin
+            // 
+            pnLogin.Controls.Add(txLogin);
+            pnLogin.Controls.Add(txPassword);
+            pnLogin.Controls.Add(label8);
+            pnLogin.Controls.Add(label7);
+            pnLogin.Location = new Point(580, 598);
+            pnLogin.Name = "pnLogin";
+            pnLogin.Size = new Size(278, 125);
+            pnLogin.TabIndex = 51;
             // 
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, sureNameDataGridViewTextBoxColumn, ageDataGridViewTextBoxColumn, empTypeDataGridViewTextBoxColumn, salaryDataGridViewTextBoxColumn, loginDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = employeBindingSource;
-            dataGridView1.Location = new Point(116, 119);
+            dataGridView1.DataSource = employeBindingSource1;
+            dataGridView1.Location = new Point(135, 67);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1180, 188);
-            dataGridView1.TabIndex = 29;
+            dataGridView1.Size = new Size(1179, 207);
+            dataGridView1.TabIndex = 52;
+            // 
+            // employeBindingSource1
+            // 
+            employeBindingSource1.DataSource = typeof(EmployeControl.Employe);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -177,192 +353,38 @@
             passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
             passwordDataGridViewTextBoxColumn.Width = 125;
             // 
-            // employeBindingSource
-            // 
-            employeBindingSource.DataSource = typeof(EmployeControl.Employe);
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 9F);
-            button1.Location = new Point(1200, 737);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 29);
-            button1.TabIndex = 33;
-            button1.Text = "Orqaga";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(175, 417);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(135, 27);
-            textBox1.TabIndex = 34;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(175, 347);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(135, 27);
-            textBox2.TabIndex = 35;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(444, 423);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(112, 27);
-            textBox3.TabIndex = 36;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(175, 649);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(135, 27);
-            textBox4.TabIndex = 37;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(175, 547);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(135, 27);
-            textBox5.TabIndex = 38;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(175, 479);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(135, 27);
-            textBox6.TabIndex = 39;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(444, 363);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(112, 27);
-            textBox7.TabIndex = 40;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(175, 596);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(135, 28);
-            comboBox1.TabIndex = 41;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(65, 354);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 20);
-            label1.TabIndex = 42;
-            label1.Text = "First Name";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(65, 420);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 20);
-            label2.TabIndex = 43;
-            label2.Text = "Last Name";
-            label2.Click += label2_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(65, 486);
-            label3.Name = "label3";
-            label3.Size = new Size(82, 20);
-            label3.TabIndex = 44;
-            label3.Text = "Sure Name";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(65, 554);
-            label4.Name = "label4";
-            label4.Size = new Size(36, 20);
-            label4.TabIndex = 45;
-            label4.Text = "Age";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(65, 604);
-            label5.Name = "label5";
-            label5.Size = new Size(100, 20);
-            label5.TabIndex = 46;
-            label5.Text = "Employe type";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(65, 656);
-            label6.Name = "label6";
-            label6.Size = new Size(42, 20);
-            label6.TabIndex = 47;
-            label6.Text = "Oylik";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(354, 370);
-            label7.Name = "label7";
-            label7.Size = new Size(46, 20);
-            label7.TabIndex = 48;
-            label7.Text = "Login";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(354, 430);
-            label8.Name = "label8";
-            label8.Size = new Size(42, 20);
-            label8.TabIndex = 49;
-            label8.Text = "Parol";
-            // 
-            // button2
-            // 
-            button2.Location = new Point(399, 500);
-            button2.Name = "button2";
-            button2.Size = new Size(84, 29);
-            button2.TabIndex = 50;
-            button2.Text = "Qo'shish";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // AddEmployeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1382, 853);
-            Controls.Add(button2);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(dataGridView1);
+            Controls.Add(pnLogin);
+            Controls.Add(btAddEmploye);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(cbEmployeType);
+            Controls.Add(txSureName);
+            Controls.Add(txAge);
+            Controls.Add(txPrice);
+            Controls.Add(txFirstName);
+            Controls.Add(txLastName);
             Controls.Add(button1);
             Controls.Add(btExit);
             Controls.Add(btSearch);
             Controls.Add(txSearch);
-            Controls.Add(dataGridView1);
             Name = "AddEmployeForm";
             Text = "AddEmployeForm";
             Load += AddEmployeForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeBindingSource).EndInit();
+            pnLogin.ResumeLayout(false);
+            pnLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeBindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -372,16 +394,15 @@
         private Button btExit;
         private Button btSearch;
         private TextBox txSearch;
-        private DataGridView dataGridView1;
         private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private ComboBox comboBox1;
+        private TextBox txLastName;
+        private TextBox txFirstName;
+        private TextBox txPassword;
+        private TextBox txPrice;
+        private TextBox txAge;
+        private TextBox txSureName;
+        private TextBox txLogin;
+        private ComboBox cbEmployeType;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -390,7 +411,10 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private Button button2;
+        private Button btAddEmploye;
+        private BindingSource employeBindingSource;
+        private Panel pnLogin;
+        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
@@ -400,6 +424,6 @@
         private DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private BindingSource employeBindingSource;
+        private BindingSource employeBindingSource1;
     }
 }
